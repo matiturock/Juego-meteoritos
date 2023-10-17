@@ -6,7 +6,7 @@ export var cast_speed := 7000.0
 export var max_length := 1400.0
 export var growth_time := 0.1
 
-var radio_danio: float = 4
+var radio_danio: float = 6
 var is_casting := false setget set_is_casting
 
 onready var fill := $FillLine2D

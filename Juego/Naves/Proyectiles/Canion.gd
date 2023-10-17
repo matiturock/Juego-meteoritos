@@ -23,7 +23,7 @@ func _ready() -> void:
 	almacenar_puntos_disparo()
 	timer_enfriamiento.wait_time = cadencia_disparo
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if esta_disparando and esta_enfriado:
 		disparar()
 
@@ -37,8 +37,7 @@ func disparar() -> void:
 	esta_enfriado = false
 	disparo_sfx.play()
 	for punto_disparo in puntos_disparo:
-		disparo_sfx.play() 
-	timer_enfriamiento.start()
+		timer_enfriamiento.start()
 	for punto_disparo in puntos_disparo:
 		var new_proyectil:Proyectil = proyectil.instance()
 		new_proyectil.crear(

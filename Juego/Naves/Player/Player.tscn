@@ -75,6 +75,7 @@ shape = SubResource( 1 )
 
 [node name="Canion" parent="." instance=ExtResource( 4 )]
 position = Vector2( -1, 0 )
+cadencia_disparo = 0.5
 
 [node name="PuntoIzquierdo" parent="Canion" index="0"]
 position = Vector2( 0, -33 )
@@ -104,7 +105,7 @@ anims/default = SubResource( 3 )
 
 [node name="ImpactoSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -15.0
+volume_db = 1.0
 bus = "SFX"
 
 [node name="Escudo" parent="." instance=ExtResource( 9 )]
