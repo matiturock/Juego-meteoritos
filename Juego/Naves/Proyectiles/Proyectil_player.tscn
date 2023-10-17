@@ -8,8 +8,13 @@ height = 45.2907
 
 [node name="Proyectil_player" instance=ExtResource( 1 )]
 z_index = 40
+z_as_relative = false
 collision_layer = 8
 collision_mask = 6
 
+[node name="Sprite" parent="." index="0"]
+self_modulate = Color( 2.15, 0.12, 0.05, 1 )
+
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 shape = SubResource( 1 )
