@@ -124,3 +124,9 @@ func recibir_danio(danio: float) -> void:
 	if hitpoints <= 0.0:
 		destruir()
 	impactosfx.play()
+
+
+func _on_body_entered(body: Node) -> void:
+	if body is Meteorito:
+		body.destruir()
+		destruir()
