@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SonidoAdvertencia.ogg-7dc59784ea5e2dec5d827de9fc58f0e5.oggstr"
+
+[deps]
+
+source_file="res://Juego/Meteoritos/SonidoAdvertencia.ogg"
+dest_files=[ "res://.import/SonidoAdvertencia.ogg-7dc59784ea5e2dec5d827de9fc58f0e5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
