@@ -34,7 +34,7 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 		return
 	
 	var mi_transform := state.get_transform()
-	mi_transform.origin = pos_spawn_original
+	#mi_transform.origin = pos_spawn_original
 	linear_velocity = vel_spawn_original
 	state.set_transform(mi_transform)
 	esta_en_sector = true
