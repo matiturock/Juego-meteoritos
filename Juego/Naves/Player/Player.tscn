@@ -64,7 +64,7 @@ can_sleep = false
 linear_damp = 2.0
 angular_damp = 5.0
 script = ExtResource( 3 )
-potencia_rotacion = 500
+potencia_rotacion = 250
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 2.08769, -0.596524 )
@@ -111,6 +111,9 @@ volume_db = 1.0
 bus = "SFX"
 
 [node name="Escudo" parent="." instance=ExtResource( 9 )]
+
+[node name="CameraPlayer" type="Camera2D" parent="."]
+current = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
