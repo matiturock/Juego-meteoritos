@@ -29,7 +29,7 @@ environment = ExtResource( 3 )
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" instance=ExtResource( 5 )]
 position = Vector2( 1058.33, 594.683 )
 tipo_peligro = "Meteorito"
-numero_peligros = 12
+numero_peligros = 1
 
 [node name="CameraNivel" type="Camera2D" parent="."]
 position = Vector2( 952.501, 539.247 )

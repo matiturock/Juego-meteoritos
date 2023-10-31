@@ -12,6 +12,7 @@ var hitpoints:float
 var esta_en_sector: bool = true setget set_esta_en_sector
 var pos_spawn_original: Vector2
 var vel_spawn_original: Vector2
+var esta_destruido: bool = false
 
 ##Onready var
 onready var impacto_sfx:AudioStreamPlayer = $impacto_sfx
@@ -23,7 +24,8 @@ func _ready() -> void:
 
 func recibir_danio(danio: float) -> void:
 	hitpoints -= danio
-	if hitpoints <= 0.0:
+	if hitpoints <= 0.0 and not esta_destruido:
+		esta_destruido = true
 		destruir()
 	
 	impacto_sfx.play()
@@ -63,7 +65,7 @@ func crear(pos:Vector2, dir:Vector2, tamanio:float) ->void:
 	#Calcular hitpoints
 	hitpoints = hitpoints_base * tamanio
 	#Solo debug
-	print("hitpoitns", hitpoints)
+	#print("hitpoitns", hitpoints)
 
 ##Metodos Customs
 func aleatorizar_velocidad() -> float:
