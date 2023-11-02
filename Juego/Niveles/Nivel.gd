@@ -14,6 +14,7 @@ onready var contenedor_proyectiles:Node
 onready var contenedor_meteoritos:Node
 onready var contenedor_sector_meteoritos:Node
 onready var camara_nivel:Camera2D = $CameraNivel
+onready var camara_player: Camera2D = $Player/CamaraPlayer
 
 #Atributos
 var meteoritos_totales:int = 0
@@ -57,25 +58,37 @@ func crear_sector_meteoritos(centro_camara:Vector2, num_peligros:int) -> void:
 	new_sector_meteoritos.crear(centro_camara, num_peligros)
 	camara_nivel.global_position = centro_camara
 	contenedor_sector_meteoritos.add_child(new_sector_meteoritos)
+	camara_nivel.zoom = camara_player.zoom
+	camara_nivel.devolver_zoom_original()
 	transicion_camaras(
-		$Player/CameraPlayer.global_position,
+		camara_player.global_position,
 		camara_nivel.global_position,
-		camara_nivel)
+		camara_nivel,
+		tiempo_tansicion_camara)
 
 func controlar_meteoritos_restantes() -> void:
 	meteoritos_totales -= 1 
 	print(meteoritos_totales)
 	if meteoritos_totales == 0:
-		transicion_camaras(camara_nivel.global_position, $Player.global_position, $Player/CameraPlayer)
+		contenedor_sector_meteoritos.get_child(0).queue_free()
+		camara_player.set_puede_hacer_zoom(true)
+		var zoom_actual = camara_player.zoom
+		camara_player.zoom = camara_nivel.zoom
+		camara_player.zoom_suavizado(zoom_actual.x,zoom_actual.y, 1.0)
+		transicion_camaras(
+			camara_nivel.global_position, 
+			$Player.global_position, 
+			camara_player,
+			tiempo_tansicion_camara * 0.10)
 
-func transicion_camaras(desde: Vector2, hasta: Vector2, camara_actual:Camera2D) -> void:
+func transicion_camaras(desde: Vector2, hasta: Vector2, camara_actual:Camera2D, tiempo_transicion_camara: float) -> void:
 	$TweenCamara.interpolate_property(
 		camara_actual,
 		"global_position",
 		desde,
 		hasta,
 		tiempo_tansicion_camara,
-		Tween.TRANS_QUINT,
+		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT
 	)
 	camara_actual.current = true
@@ -105,3 +118,8 @@ func _on_spawn_meteoritos(pos_spawn: Vector2, dir_meteorito: Vector2, tamanio: f
 	)
 	contenedor_meteoritos.add_child(new_meteorito)
  
+
+
+func _on_TweenCamara_tween_completed(object: Object, key: NodePath) -> void:
+	if object.name == "CamaraPlayer":
+		object.global_position = $Player.global_position

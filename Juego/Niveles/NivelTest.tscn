@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Juego/Explosiones/ExplosionMeteorito.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=8]
 [ext_resource path="res://icon.png" type="Texture" id=9]
+[ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=10]
 
 [node name="NivelTest" type="Node2D"]
 script = ExtResource( 2 )
@@ -16,7 +17,7 @@ explosion = ExtResource( 4 )
 meteorito = ExtResource( 6 )
 explosion_meteorito = ExtResource( 7 )
 sector_meteoritos = ExtResource( 8 )
-tiempo_tansicion_camara = 50.0
+tiempo_tansicion_camara = 0.5
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 377.902, 615.295 )
@@ -29,13 +30,18 @@ environment = ExtResource( 3 )
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" instance=ExtResource( 5 )]
 position = Vector2( 1058.33, 594.683 )
 tipo_peligro = "Meteorito"
-numero_peligros = 1
+numero_peligros = 2
 
 [node name="CameraNivel" type="Camera2D" parent="."]
 position = Vector2( 952.501, 539.247 )
+script = ExtResource( 10 )
+
+[node name="TweenZoom" type="Tween" parent="CameraNivel"]
 
 [node name="TweenCamara" type="Tween" parent="."]
 
 [node name="icon" type="Sprite" parent="."]
 position = Vector2( 1067.89, 797.959 )
 texture = ExtResource( 9 )
+
+[connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

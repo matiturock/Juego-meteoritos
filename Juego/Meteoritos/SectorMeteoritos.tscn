@@ -125,12 +125,9 @@ tracks/4/keys = {
 }
 
 [node name="SectorMeteoritos" type="Node2D"]
-position = Vector2( 956.008, 537.401 )
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_horizontal_guides_": [ -368.048, 1436.65 ],
-"_edit_vertical_guides_": [ 2350.45, -436.494 ]
+"_edit_group_": true
 }
 cantidad_meteoritos = 3
 
@@ -141,7 +138,7 @@ __meta__ = {
 }
 
 [node name="BordeIzquierdo" type="StaticBody2D" parent="BordesNavePlayer"]
-position = Vector2( -956.008, 0 )
+position = Vector2( -960, 0 )
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BordesNavePlayer/BordeIzquierdo"]
@@ -149,7 +146,7 @@ modulate = Color( 1, 0, 0, 1 )
 shape = SubResource( 1 )
 
 [node name="BordeDerecho" type="StaticBody2D" parent="BordesNavePlayer"]
-position = Vector2( 961.965, 0 )
+position = Vector2( 960, 0 )
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BordesNavePlayer/BordeDerecho"]
@@ -157,14 +154,14 @@ position = Vector2( 1.87109, 0 )
 shape = SubResource( 2 )
 
 [node name="BordeSuperior" type="StaticBody2D" parent="BordesNavePlayer"]
-position = Vector2( 0, -537.401 )
+position = Vector2( 0, -540 )
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BordesNavePlayer/BordeSuperior"]
 shape = SubResource( 3 )
 
 [node name="Bordeinferior" type="StaticBody2D" parent="BordesNavePlayer"]
-position = Vector2( 0, 539.388 )
+position = Vector2( 0, 540 )
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BordesNavePlayer/Bordeinferior"]
@@ -292,8 +289,6 @@ direccion = Vector2( 2, -1 )
 [node name="MeteoritoSpawner16" parent="Spawners" instance=ExtResource( 1 )]
 position = Vector2( -1150, -360 )
 direccion = Vector2( 2, 1 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
