@@ -8,18 +8,27 @@ export var radio_desgaste:float = -1.6
 
 ##Variables
 var esta_activado: bool = false setget ,get_esta_activado
+var energia_original:float
 
 ## Metodos
 func _ready() -> void:
 	set_process(false)
 	controlar_colisionador(true)
+	energia_original = energia
 
 func _process(delta: float) -> void:
-	energia +=radio_desgaste * delta
-	if energia <= 0.0:
-		desactivar()
+	controlar_energia(radio_desgaste * delta)
 
 #Metodos Customs
+func controlar_energia(consumo: float) -> void:
+	energia += consumo
+	print("Energia Escudo", energia)
+	
+	if energia > energia_original:
+		energia = energia_original
+	elif energia <= 0.0:
+		desactivar()
+
 func controlar_colisionador(esta_desactivado: bool) -> void:
 	$CollisionShape2D.set_deferred("disabled", esta_desactivado)
 
