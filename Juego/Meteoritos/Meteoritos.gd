@@ -29,7 +29,7 @@ func recibir_danio(danio: float) -> void:
 		destruir()
 	
 	impacto_sfx.play()
-	animacion_impacto.play("impacto")
+	#animacion_impacto.play("impacto")
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	if esta_en_sector:
