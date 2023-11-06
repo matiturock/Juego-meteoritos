@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Juego/Meteoritos/Meteoritos.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Explosiones/ExplosionMeteorito.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Juego/Naves/Enemigos/EnemigoInterceptor.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=10]
 [ext_resource path="res://Juego/Naves/Estacion/EstacionRecarga.tscn" type="PackedScene" id=11]
 [ext_resource path="res://TemporalAssets/Backgrounds/black.png" type="Texture" id=12]
@@ -20,6 +21,9 @@ explosion_meteorito = ExtResource( 7 )
 sector_meteoritos = ExtResource( 8 )
 tiempo_tansicion_camara = 0.5
 
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 390.617, 677.967 )
+
 [node name="TriggersLluviaMeteoritos" type="Node" parent="."]
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" instance=ExtResource( 5 )]
@@ -31,9 +35,6 @@ numero_peligros = 2
 
 [node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 11 )]
 position = Vector2( -509.747, 958.724 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 377.902, 615.295 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
@@ -51,6 +52,9 @@ scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 256, 256 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource( 12 )
@@ -110,5 +114,8 @@ texture = ExtResource( 12 )
 [node name="Sprite15" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 2000, 1000 )
 texture = ExtResource( 12 )
+
+[node name="EnemigoInterceptor" parent="." instance=ExtResource( 9 )]
+position = Vector2( 399.596, 951.848 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
