@@ -26,6 +26,7 @@ can_sleep = false
 linear_damp = 1.5
 angular_damp = 5.0
 script = ExtResource( 10 )
+hitpoints = 100.0
 cantidad_explosiones = 3
 
 [node name="Sprite" parent="." index="0"]
@@ -40,6 +41,7 @@ shape = SubResource( 1 )
 position = Vector2( -1, -0.471939 )
 cadencia_disparo = 0.2
 velocidad_proyectil = 2000
+danio_proyectil = 3
 
 [node name="PuntoIzquierdo" parent="Canion" index="0"]
 position = Vector2( 0, -28 )
