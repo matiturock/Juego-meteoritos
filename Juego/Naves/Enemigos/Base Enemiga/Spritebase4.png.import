@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SpwanInterceptor.png-1d756e176aaf3daceca2bfe2dd3e978d.stex"
+path="res://.import/Spritebase4.png-03a0cb7db2ae738c12b8d115aadd42c1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Juego/Naves/Enemigos/SpwanInterceptor.png"
-dest_files=[ "res://.import/SpwanInterceptor.png-1d756e176aaf3daceca2bfe2dd3e978d.stex" ]
+source_file="res://Juego/Naves/Enemigos/Base Enemiga/Spritebase4.png"
+dest_files=[ "res://.import/Spritebase4.png-03a0cb7db2ae738c12b8d115aadd42c1.stex" ]
 
 [params]
 

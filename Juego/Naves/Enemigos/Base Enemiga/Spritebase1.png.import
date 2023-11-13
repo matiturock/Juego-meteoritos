@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EnemigoInterceptor.png-97e3f75379b6e062adf0f6e9aac37fca.stex"
+path="res://.import/Spritebase1.png-e94af77779c6fea7556c79a57d0b6d32.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Juego/Naves/Enemigos/EnemigoInterceptor.png"
-dest_files=[ "res://.import/EnemigoInterceptor.png-97e3f75379b6e062adf0f6e9aac37fca.stex" ]
+source_file="res://Juego/Naves/Enemigos/Base Enemiga/Spritebase1.png"
+dest_files=[ "res://.import/Spritebase1.png-e94af77779c6fea7556c79a57d0b6d32.stex" ]
 
 [params]
 
