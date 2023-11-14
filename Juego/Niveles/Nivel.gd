@@ -36,6 +36,7 @@ func conectar_seniales() -> void:
 	Eventos.connect("destruccion_meteorito", self, "_on_destruccion_meteorito")
 	Eventos.connect("nave_en_sector_peligro", self, "_on_nave_en_sector_peligro")
 	Eventos.connect("base_destruida", self , "_on_base_destruida")
+	Eventos.connect("spawn_orbital", self , "_on_spawn_orbital")
 
 func crear_contenedores() -> void:
 	contenedor_proyectiles = Node.new()
@@ -117,6 +118,9 @@ func transicion_camaras(desde: Vector2, hasta: Vector2, camara_actual:Camera2D, 
 ##Conexiones señales externas
 func _on_disparo(proyectil:Proyectil) -> void:
 	contenedor_proyectiles.add_child(proyectil)
+
+func _on_spawn_orbital(enemigo: EnemigoOrbital) -> void:
+	contenedor_enemigos.add_child(enemigo)
 
 func _on_nave_destruida(nave: Player, posicion: Vector2, num_explosiones: int) -> void:
 	if nave is Player:

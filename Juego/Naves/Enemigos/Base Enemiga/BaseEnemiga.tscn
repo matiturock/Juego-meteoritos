@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/Spritebase3.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/Spritebase2.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/BaseEnemiga.gd" type="Script" id=7]
 [ext_resource path="res://Juego/Meteoritos/impacto_sfx.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Juego/Enemigo Dumy/AreaColision.gd" type="Script" id=9]
+[ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/PosicionesSpawn.gd" type="Script" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 50.9028
@@ -262,6 +263,22 @@ bus = "SFX"
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
+[node name="PosicionesSpawn" type="Node2D" parent="."]
+script = ExtResource( 10 )
+
+[node name="Norte" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 0, -400 )
+
+[node name="Sur" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 0, 400 )
+
+[node name="Este" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 400, 0 )
+
+[node name="Oeste" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( -400, 0 )
+
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 
 [editable path="AreaAtraccion"]
