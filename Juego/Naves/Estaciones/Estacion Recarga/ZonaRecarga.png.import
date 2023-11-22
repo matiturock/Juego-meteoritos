@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ZonaRecarga.png-e7173198e6e67f317a3f038a8f2823e6.stex"
+path="res://.import/ZonaRecarga.png-7060e98240d0a8439059935a3cf3552d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Juego/Naves/Estacion/ZonaRecarga.png"
-dest_files=[ "res://.import/ZonaRecarga.png-e7173198e6e67f317a3f038a8f2823e6.stex" ]
+source_file="res://Juego/Naves/Estaciones/Estacion Recarga/ZonaRecarga.png"
+dest_files=[ "res://.import/ZonaRecarga.png-7060e98240d0a8439059935a3cf3552d.stex" ]
 
 [params]
 

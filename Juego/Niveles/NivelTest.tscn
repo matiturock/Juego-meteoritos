@@ -4,6 +4,7 @@
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=2]
 [ext_resource path="res://default_env.tres" type="Environment" id=3]
 [ext_resource path="res://Juego/Explosiones/Explosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/Naves/Estaciones/Rele/ReleMasa.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Juego/Meteoritos/Meteoritos.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Explosiones/ExplosionMeteorito.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=8]
@@ -11,7 +12,6 @@
 [ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=10]
 [ext_resource path="res://TemporalAssets/Backgrounds/black.png" type="Texture" id=12]
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/BaseEnemiga.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Juego/Naves/Enemigos/Enemigo Orbital/NaveOrbital.tscn" type="PackedScene" id=15]
 
 [node name="NivelTest" type="Node2D"]
 script = ExtResource( 2 )
@@ -21,6 +21,7 @@ explosion_meteorito = ExtResource( 7 )
 sector_meteoritos = ExtResource( 8 )
 tiempo_tansicion_camara = 0.5
 enemigo_interceptor = ExtResource( 9 )
+rele_masa = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 390.617, 677.967 )
@@ -33,13 +34,7 @@ position = Vector2( 390.617, 677.967 )
 
 [node name="ContenedorBaseEnemiga" type="Node" parent="."]
 
-[node name="BaseEnemiga4" parent="ContenedorBaseEnemiga" instance=ExtResource( 14 )]
-position = Vector2( 1495.39, 703.449 )
-orbital = ExtResource( 15 )
-
-[node name="BaseEnemiga5" parent="ContenedorBaseEnemiga" instance=ExtResource( 14 )]
-position = Vector2( 283.852, -293.071 )
-orbital = ExtResource( 15 )
+[node name="BaseEnemiga2" parent="ContenedorBaseEnemiga" instance=ExtResource( 14 )]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )

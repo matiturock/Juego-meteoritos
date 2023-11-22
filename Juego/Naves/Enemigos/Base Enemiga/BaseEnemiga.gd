@@ -63,21 +63,21 @@ func deteccion_cuadrante() -> Vector2:
 	
 	if abs(angulo_player) <= 45.0:
 		#Player entra por la derecha
-		$RutaEnemigo.rotation_degrees = 180.0
+		$RutaEnemigo.rotation_degrees = 0.0
 		return $PosicionesSpawn/Este.position
 	elif abs(angulo_player) > 135.0 and abs(angulo_player) <= 180.0:
 		#Player entra por la izquierda
-		$RutaEnemigo.rotation_degrees = 0.0
+		$RutaEnemigo.rotation_degrees = 180.0
 		return $PosicionesSpawn/Oeste.position
 	elif abs(angulo_player) > 45.0 and abs(angulo_player) <=135.0:
 		#Player entra por arriba o por abajo
 		if sign(angulo_player) > 0:
 			#Player entra por abajo
-			$RutaEnemigo.rotation_degrees = 270.0
+			$RutaEnemigo.rotation_degrees = 90.0
 			return $PosicionesSpawn/Sur.position
 		else:
 			#Player entra por arriba
-			$RutaEnemigo.rotation_degrees = 90
+			$RutaEnemigo.rotation_degrees = 270.0
 			return $PosicionesSpawn/Norte.position
 		
 	return $PosicionesSpawn/Norte.position
