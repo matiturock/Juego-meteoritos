@@ -31,7 +31,6 @@ func _ready() -> void:
 	crear_contenedores()
 	player = DatosJuego.get_player_actual()
 	numero_bases_enemigas = contabilizar_bases_enemigas()
-	player = DatosJuego.get_player_actual()
 
 #Metodos Customs
 func conectar_seniales() -> void:
