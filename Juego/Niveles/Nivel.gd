@@ -9,6 +9,8 @@ export var explosion_meteorito: PackedScene = null
 export var sector_meteoritos:PackedScene = null
 export var tiempo_tansicion_camara:float = 2
 export var enemigo_interceptor: PackedScene = null
+export var rele_masa:PackedScene = null
+export var tiempo_transicion_camara:float = 2.0
 
 ##Atributos onready
 onready var contenedor_proyectiles:Node 
@@ -21,11 +23,14 @@ onready var contenedor_enemigos: Node
 #Atributos
 var meteoritos_totales:int = 0
 var player: Player = null 
+var numero_bases_enemigas = 0
 
 ## Metodos
 func _ready() -> void:
 	conectar_seniales()
 	crear_contenedores()
+	player = DatosJuego.get_player_actual()
+	numero_bases_enemigas = contabilizar_bases_enemigas()
 	player = DatosJuego.get_player_actual()
 
 #Metodos Customs
@@ -36,6 +41,7 @@ func conectar_seniales() -> void:
 	Eventos.connect("destruccion_meteorito", self, "_on_destruccion_meteorito")
 	Eventos.connect("nave_en_sector_peligro", self, "_on_nave_en_sector_peligro")
 	Eventos.connect("base_destruida", self , "_on_base_destruida")
+	Eventos.connect("spawn_orbital", self , "_on_spawn_orbital")
 
 func crear_contenedores() -> void:
 	contenedor_proyectiles = Node.new()
@@ -56,6 +62,11 @@ func _on_nave_en_sector_peligro(centro_cam: Vector2, tipo_peligro: String, num_p
 		crear_sector_meteoritos(centro_cam , num_peligros)
 	elif tipo_peligro == "Enemigo":
 		crear_sector_enemigos(num_peligros)
+
+func crear_rele() -> void:
+	var new_rele_masa:ReleDeMasa = rele_masa.instance()
+	new_rele_masa.global_position = player.global_position + crear_posicion_aleatoria(1000.0, 800.0)
+	add_child(new_rele_masa)
 
 func crear_sector_meteoritos(centro_camara:Vector2, num_peligros:int) -> void:
 	meteoritos_totales = num_peligros
@@ -94,6 +105,9 @@ func controlar_meteoritos_restantes() -> void:
 			camara_player,
 			tiempo_tansicion_camara * 0.10)
 
+func contabilizar_bases_enemigas() -> int:
+	return $ContenedorBaseEnemiga.get_child_count()
+
 func crear_posicion_aleatoria(rango_horizontal:float, rango_vertical:float) -> Vector2:
 	randomize()
 	var rand_x = rand_range(-rango_horizontal, rango_horizontal)
@@ -118,6 +132,9 @@ func transicion_camaras(desde: Vector2, hasta: Vector2, camara_actual:Camera2D, 
 func _on_disparo(proyectil:Proyectil) -> void:
 	contenedor_proyectiles.add_child(proyectil)
 
+func _on_spawn_orbital(enemigo: EnemigoOrbital) -> void:
+	contenedor_enemigos.add_child(enemigo)
+
 func _on_nave_destruida(nave: Player, posicion: Vector2, num_explosiones: int) -> void:
 	if nave is Player:
 		transicion_camaras(
@@ -128,10 +145,14 @@ func _on_nave_destruida(nave: Player, posicion: Vector2, num_explosiones: int) -
 		)
 	crear_explosion(posicion, num_explosiones , 0.6, Vector2(100.0, 50.0))
 
-func _on_base_destruida(pos_partes: Array) -> void:
+func _on_base_destruida(_base, pos_partes: Array) -> void:
 	for posicion in pos_partes:
 		crear_explosion(posicion)
 		yield(get_tree().create_timer(0.5),"timeout")
+	
+	numero_bases_enemigas -=1
+	if numero_bases_enemigas == 0:
+		crear_rele() 
 
 func crear_explosion(
 	posicion: Vector2,

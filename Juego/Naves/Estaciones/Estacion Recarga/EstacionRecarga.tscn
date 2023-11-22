@@ -1,10 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Juego/Naves/Estacion/SpriteEstacion.png" type="Texture" id=1]
-[ext_resource path="res://Juego/Naves/Estacion/AreaAtraccion.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Juego/Naves/Estacion/vacio.ogg" type="AudioStream" id=3]
-[ext_resource path="res://Juego/Naves/Estacion/recarga.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Juego/Naves/Estacion/EstacionRecarga.gd" type="Script" id=5]
+[ext_resource path="res://Juego/Naves/Estaciones/Estacion Recarga/SpriteEstacion.png" type="Texture" id=1]
+[ext_resource path="res://Juego/Naves/Estaciones/Estacion Recarga/AreaAtraccion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Naves/Estaciones/Estacion Recarga/vacio.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Juego/Naves/Estaciones/Estacion Recarga/recarga.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Juego/Naves/Estaciones/Estacion Recarga/EstacionRecarga.gd" type="Script" id=5]
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 120.392

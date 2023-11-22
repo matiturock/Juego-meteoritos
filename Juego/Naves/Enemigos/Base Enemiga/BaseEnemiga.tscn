@@ -1,14 +1,17 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/Spritebase3.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/Spritebase2.png" type="Texture" id=2]
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/Spritebase5.png" type="Texture" id=3]
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/Spritebase1.png" type="Texture" id=4]
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/Spritebase4.png" type="Texture" id=5]
-[ext_resource path="res://Juego/Naves/Estacion/AreaAtraccion.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Juego/Naves/Estaciones/Estacion Recarga/AreaAtraccion.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/BaseEnemiga.gd" type="Script" id=7]
 [ext_resource path="res://Juego/Meteoritos/impacto_sfx.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Juego/Enemigo Dumy/AreaColision.gd" type="Script" id=9]
+[ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/PosicionesSpawn.gd" type="Script" id=10]
+[ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/RutaEnemigo.gd" type="Script" id=11]
+[ext_resource path="res://Juego/Naves/Enemigos/Enemigo Orbital/NaveOrbital.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 50.9028
@@ -42,72 +45,36 @@ resource_name = "Movimiento_pendulo"
 length = 5.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites:position")
+tracks/0/path = NodePath("Sprites:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.6, 5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1.4, 2.7, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 290, 0 ), Vector2( 0, 0 ) ]
+"values": [ 0.0, 90.0, -90.0, -180.0, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AreaColision:position")
+tracks/1/path = NodePath("AreaColision:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2.6, 5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1.4, 2.7, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 290, 0 ), Vector2( 0, 0 ) ]
+"values": [ 0.0, 90.0, -90.0, -180.0, 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprites:rotation_degrees")
+tracks/2/path = NodePath("AreaAtraccion/SpriteZonaRecarga:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 360.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("AreaColision:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 360.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("AreaAtraccion:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 2.6, 5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 290, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("AreaAtraccion/SpriteZonaRecarga:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -194,9 +161,16 @@ tracks/2/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
+[sub_resource type="Curve2D" id=8]
+_data = {
+"points": PoolVector2Array( -28.1502, -103.593, 28.1502, 103.593, 222.47, -331.932, -60.8045, -28.1502, 60.8045, 28.1502, 343.286, -262.085, -22.2487, -64.6272, 22.2487, 64.6272, 362.163, -137.494, -6.35678, -47.6758, 6.35678, 47.6758, 434.897, -56.9734, 9.53517, -30.7244, -9.53517, 30.7244, 408.897, 77.0266, 40.2596, -34.9623, -40.2596, 34.9623, 386.897, 211.027, 32.8434, -18.0109, -32.8434, 18.0109, 306.897, 237.027, 21.1893, -56.1515, -21.1893, 56.1515, 276.897, 331.027, 22.2487, -5.29732, -22.2487, 5.29732, 186.897, 369.027, 14.8325, -8.4757, -14.8325, 8.4757, 88.8969, 423.027, 13.2142, -13.6862, -13.2142, 13.6862, 4.89685, 443.027, 33.7746, 9.21126, -33.7746, -9.21126, -175.103, 393.027, 26.6103, 23.0282, -26.6103, -23.0282, -233.103, 337.027, 47.1816, 37.3521, -47.1816, -37.3521, -313.103, 311.027, 10.8125, 32.4374, -10.8125, -32.4374, -337.103, 223.027, 16.9514, 50.8542, -16.9514, -50.8542, -425.103, 125.027, 0, 0, 0, 0, -411.103, 9.02661, 0, 0, 0, 0, -411.103, 9.02661, 2.11893, 34.9623, -2.11893, -34.9623, -439.103, -82.9734, -49.3883, 15.7145, 49.3883, -15.7145, -383.103, -180.973, -25.8166, 23.5717, 25.8166, -23.5717, -267.028, -316.347, -23.5717, 22.4492, 23.5717, -22.4492, -199.222, -398.985, -52.7557, 14.592, 52.7557, -14.592, -84.8, -396.866, -79.9466, 3.37803, 79.9466, -3.37803, -4.28088, -447.72, -59.6785, -28.1502, 59.6785, 28.1502, 184.76, -409.954, 0, 0, 0, 0, 222.47, -331.932 )
+}
+
 [node name="BaseEnemiga" type="Node2D"]
 z_index = 41
 script = ExtResource( 7 )
+orbital = ExtResource( 12 )
+intervalo_spawn = 1.5
 
 [node name="Sprites" type="Node2D" parent="."]
 __meta__ = {
@@ -245,7 +219,7 @@ shape = SubResource( 3 )
 [node name="AreaAtraccion" parent="." instance=ExtResource( 6 )]
 
 [node name="CollisionShape2D" parent="AreaAtraccion" index="0"]
-visible = false
+position = Vector2( -1.88776, -4.78581e-06 )
 
 [node name="SpriteZonaRecarga" parent="AreaAtraccion" index="1"]
 visible = false
@@ -262,6 +236,29 @@ bus = "SFX"
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
+[node name="PosicionesSpawn" type="Node2D" parent="."]
+script = ExtResource( 10 )
+
+[node name="Norte" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 0, -400 )
+
+[node name="Sur" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 0, 400 )
+
+[node name="Este" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 400, 0 )
+
+[node name="Oeste" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( -400, 0 )
+
+[node name="RutaEnemigo" type="Path2D" parent="."]
+curve = SubResource( 8 )
+script = ExtResource( 11 )
+
+[node name="TimerSpawnerEnemigos" type="Timer" parent="."]
+
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="timeout" from="TimerSpawnerEnemigos" to="." method="_on_TimerSpawnerEnemigos_timeout"]
 
 [editable path="AreaAtraccion"]

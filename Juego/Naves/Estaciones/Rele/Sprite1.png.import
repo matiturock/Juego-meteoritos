@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SpriteEstacion.png-bcc5321327927c9db6e5183411555a58.stex"
+path="res://.import/Sprite1.png-d59c62823113442a945447f04280b036.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Juego/Naves/Estacion/SpriteEstacion.png"
-dest_files=[ "res://.import/SpriteEstacion.png-bcc5321327927c9db6e5183411555a58.stex" ]
+source_file="res://Juego/Naves/Estaciones/Rele/Sprite1.png"
+dest_files=[ "res://.import/Sprite1.png-d59c62823113442a945447f04280b036.stex" ]
 
 [params]
 
