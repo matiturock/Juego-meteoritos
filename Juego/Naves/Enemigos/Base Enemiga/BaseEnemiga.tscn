@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=17 format=2]
+=======
+[gd_scene load_steps=20 format=2]
+>>>>>>> parent of 73f96bb (fin semana 4)
 
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/Spritebase3.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/Spritebase2.png" type="Texture" id=2]
@@ -9,6 +13,11 @@
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/BaseEnemiga.gd" type="Script" id=7]
 [ext_resource path="res://Juego/Meteoritos/impacto_sfx.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Juego/Enemigo Dumy/AreaColision.gd" type="Script" id=9]
+<<<<<<< HEAD
+=======
+[ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/PosicionesSpawn.gd" type="Script" id=10]
+[ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/RutaEnemigo.gd" type="Script" id=11]
+>>>>>>> parent of 73f96bb (fin semana 4)
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 50.9028
@@ -197,6 +206,10 @@ tracks/2/keys = {
 [node name="BaseEnemiga" type="Node2D"]
 z_index = 41
 script = ExtResource( 7 )
+<<<<<<< HEAD
+=======
+intervalo_spawn = 1.5
+>>>>>>> parent of 73f96bb (fin semana 4)
 
 [node name="Sprites" type="Node2D" parent="."]
 __meta__ = {
