@@ -5,7 +5,10 @@
 [ext_resource path="res://default_env.tres" type="Environment" id=3]
 [ext_resource path="res://Juego/Explosiones/Explosion.tscn" type="PackedScene" id=4]
 <<<<<<< HEAD
+<<<<<<< HEAD
 [ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=5]
+=======
+>>>>>>> parent of 73f96bb (fin semana 4)
 =======
 >>>>>>> parent of 73f96bb (fin semana 4)
 [ext_resource path="res://Juego/Meteoritos/Meteoritos.tscn" type="PackedScene" id=6]
@@ -57,9 +60,12 @@ position = Vector2( -509.747, 958.724 )
 [node name="ContenedorBaseEnemiga" type="Node" parent="."]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [node name="BaseEnemiga" parent="ContenedorBaseEnemiga" instance=ExtResource( 14 )]
 position = Vector2( 556.74, -193.063 )
 =======
+=======
+>>>>>>> parent of 73f96bb (fin semana 4)
 [node name="BaseEnemiga4" parent="ContenedorBaseEnemiga" instance=ExtResource( 14 )]
 position = Vector2( 1495.39, 703.449 )
 orbital = ExtResource( 15 )
@@ -67,6 +73,9 @@ orbital = ExtResource( 15 )
 [node name="BaseEnemiga5" parent="ContenedorBaseEnemiga" instance=ExtResource( 14 )]
 position = Vector2( 283.852, -293.071 )
 orbital = ExtResource( 15 )
+<<<<<<< HEAD
+>>>>>>> parent of 73f96bb (fin semana 4)
+=======
 >>>>>>> parent of 73f96bb (fin semana 4)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 [gd_scene load_steps=17 format=2]
+=======
+[gd_scene load_steps=20 format=2]
+>>>>>>> parent of 73f96bb (fin semana 4)
 =======
 [gd_scene load_steps=20 format=2]
 >>>>>>> parent of 73f96bb (fin semana 4)
@@ -17,6 +21,9 @@
 =======
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/PosicionesSpawn.gd" type="Script" id=10]
 [ext_resource path="res://Juego/Naves/Enemigos/Base Enemiga/RutaEnemigo.gd" type="Script" id=11]
+<<<<<<< HEAD
+>>>>>>> parent of 73f96bb (fin semana 4)
+=======
 >>>>>>> parent of 73f96bb (fin semana 4)
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -207,7 +214,10 @@ tracks/2/keys = {
 z_index = 41
 script = ExtResource( 7 )
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 73f96bb (fin semana 4)
 intervalo_spawn = 1.5
 >>>>>>> parent of 73f96bb (fin semana 4)
 
